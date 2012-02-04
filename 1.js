@@ -4,20 +4,19 @@
  *
  * Find the sum of all the multiples of 3 or 5 below 1000.
  *
- * val http://projecteuler.net/problem=1
+ * From http://projecteuler.net/problem=1
  */
-(function () {
+(function (limit) {
 
-var val = 999;
 var sum = 0;
 
-for (; val; --val) {
-	if (val % 3 === 0 || val % 5 === 0) {
-		sum += val;
+for (; limit; --limit) {
+	if (limit % 3 === 0 || limit % 5 === 0) {
+		sum += limit;
 	}
 }
 
 console.log(sum);
 
 return sum;
-})();
+})(999);

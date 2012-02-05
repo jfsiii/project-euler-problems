@@ -19,12 +19,14 @@
         // incrementing, alternately, by 2 and 4:
         // 5, 7, 11, 13, 17, 19, 23, 25, 29, 31, 35, 37 ...
         var test = 5;
+
         // increment, alternately, by these values
         var increment = [2, 4];
+
         // `false` to start with the first value
         // `true` to start with the second value
         var alternate = false;
-        var max = Math.sqrt(limit);
+
         while (list.length < limit) {
             if (isPrime(test)) {
                 list.push(test);
@@ -55,8 +57,10 @@
             // incrementing, alternately, by 2 and 4:
             // 5, 7, 11, 13, 17, 19, 23, 25, 29, 31, 35, 37 ...
             var test = 5;
+
             // increment, alternately, by these values
             var increment = [2, 4];
+
             // `false` to start with the first value
             // `true` to start with the second value
             var alternate = false;

@@ -8,44 +8,44 @@
  * exceed four million, find the sum of the even-valued terms.
 */
 (function (max) {
-var n = 0;
-var result = 0;
-var sum = 0;
-var cache = {};
+    var n = 0;
+    var result = 0;
+    var sum = 0;
+    var cache = {};
 
-do {
-	// get the last value in the sequence
-	result = fib(n, cache);
-	console.log(result);
+    do {
+        // get the last value in the sequence
+        result = fib(n, cache);
+        console.log(result);
 
-	// if the result is even
-	if (result % 2 === 0) {
-		console.log('\tadd', result);
-		// add it to the sum
-		sum += result;
-	}
-}
-// if the last value is less than the max
-// increment `n` and get its value
-while (result < max && ++n);
+        // if the result is even
+        if (result % 2 === 0) {
+            console.log('\tadd', result);
+            // add it to the sum
+            sum += result;
+        }
+    }
+    // if the last value is less than the max
+    // increment `n` and get its value
+    while (result < max && ++n);
 
-console.log('sum of even-valued terms less than', max, 'is', sum);
+    console.log('sum of even-valued terms less than', max, 'is', sum);
 
-// internal functions
-function fib(n, cache) {
+    // internal functions
+    function fib(n, cache) {
 
-	// create a cache if it's missing
-	if (! cache) cache = fib.cache = {};
+        // create a cache if it's missing
+        if (! cache) cache = fib.cache = {};
 
-	// if we haven't already computed the sequence
-	if (! isFinite(cache[n])) {
-		// store the result
-		cache[n] = (n < 2)
-			? n
-			: fib(n - 1, cache) + fib(n - 2, cache);
-	}
+        // if we haven't already computed the sequence
+        if (! isFinite(cache[n])) {
+            // store the result
+            cache[n] = (n < 2)
+                ? n
+                : fib(n - 1, cache) + fib(n - 2, cache);
+        }
 
-	// return the stored result
-	return cache[n];
-}
+        // return the stored result
+        return cache[n];
+    }
 })(4e6);

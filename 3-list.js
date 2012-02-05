@@ -7,22 +7,22 @@
  */
 (function (num) {
 
-function primeFactorsOf(num) {
-	var i = 2;
-	var primeFactors = [];
+    function primeFactorsOf(num) {
+        var i = 2;
+        var primeFactors = [];
 
-	for (; i <= num; i++) {
-        if (num % i === 0) {
-			primeFactors.push(i);
-            num /= i--;
+        for (; i <= num; i++) {
+            if (num % i === 0) {
+                primeFactors.push(i);
+                num /= i--;
+            }
         }
+
+        return primeFactors;
     }
 
-    return primeFactors;
-}
-
-var primeFactors = primeFactorsOf(num);
-var largest = Math.max.apply(Math, primeFactors);
-console.log(largest);
+    var primeFactors = primeFactorsOf(num);
+    var largest = Math.max.apply(Math, primeFactors);
+    console.log(largest);
 
 })(600851475143);

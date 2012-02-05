@@ -7,19 +7,19 @@
  */
 (function (num) {
 
-function largestPrimeFactorOf(num) {
-	var i = 2;
+    function largestPrimeFactorOf(num) {
+        var i = 2;
 
-	for (; i <= num; i++) {
-        if (num % i === 0) {
-            num /= i--;
+        for (; i <= num; i++) {
+            if (num % i === 0) {
+                num /= i--;
+            }
         }
+
+        return i;
     }
 
-    return i;
-}
-
-var largest = largestPrimeFactorOf(num);
-console.log(largest);
+    var largest = largestPrimeFactorOf(num);
+    console.log(largest);
 
 })(600851475143);

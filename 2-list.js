@@ -9,57 +9,57 @@
 */
 (function (max) {
 
-var sum = fibonaccisUntil(max)
-	// get the even values
-	.filter(function (value) {
-		// even numbers have a remainder of `0`
-		// `!0 === true`
-		return !(value % 2);
-	})
-	// add them together
-	.reduce(function (previous, current) {
-		return previous + current;
-	}, 0);
-console.log('sum of even-valued terms less than', max, 'is', sum);
+    var sum = fibonaccisUntil(max)
+        // get the even values
+        .filter(function (value) {
+            // even numbers have a remainder of `0`
+            // `!0 === true`
+            return !(value % 2);
+        })
+        // add them together
+        .reduce(function (previous, current) {
+            return previous + current;
+        }, 0);
+    console.log('sum of even-valued terms less than', max, 'is', sum);
 
-// internal functions
-function fibonaccisUntil(max) {
-	var n = 0;
-	var result = 0;
-	var cache = {};
-	var sequence = [];
+    // internal functions
+    function fibonaccisUntil(max) {
+        var n = 0;
+        var result = 0;
+        var cache = {};
+        var sequence = [];
 
-	// get the Fibonacci sequence where the last term is below `max`
-	do {
-		// get the last value in the sequence
-		result = fib(n, cache);
-	}
-	while (
-		// if the last value is less than the max
-		result < max &&
-		// push `result` into the sequence
-		sequence.push(result) &&
-		// increment `n` and iterate again
-		++n
-	);
+        // get the Fibonacci sequence where the last term is below `max`
+        do {
+            // get the last value in the sequence
+            result = fib(n, cache);
+        }
+        while (
+            // if the last value is less than the max
+            result < max &&
+            // push `result` into the sequence
+            sequence.push(result) &&
+            // increment `n` and iterate again
+            ++n
+        );
 
-	return sequence;
-}
+        return sequence;
+    }
 
-function fib(n, cache) {
+    function fib(n, cache) {
 
-	// create a cache if it's missing
-	if (! cache) cache = fib.cache = {};
+        // create a cache if it's missing
+        if (! cache) cache = fib.cache = {};
 
-	// if we haven't already computed the sequence
-	if (! isFinite(cache[n])) {
-		// store the result
-		cache[n] = (n < 2)
-			? n
-			: fib(n - 1, cache) + fib(n - 2, cache);
-	}
+        // if we haven't already computed the sequence
+        if (! isFinite(cache[n])) {
+            // store the result
+            cache[n] = (n < 2)
+                ? n
+                : fib(n - 1, cache) + fib(n - 2, cache);
+        }
 
-	// return the cached result
-	return cache[n];
-}
+        // return the cached result
+        return cache[n];
+    }
 })(4e6);

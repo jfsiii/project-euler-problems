@@ -8,15 +8,15 @@
  */
 (function (limit) {
 
-var sum = 0;
+    var sum = 0;
 
-for (; limit; --limit) {
-	if (limit % 3 === 0 || limit % 5 === 0) {
-		sum += limit;
-	}
-}
+    for (; limit; --limit) {
+        if (limit % 3 === 0 || limit % 5 === 0) {
+            sum += limit;
+        }
+    }
 
-console.log(sum);
+    console.log(sum);
 
-return sum;
+    return sum;
 })(999);

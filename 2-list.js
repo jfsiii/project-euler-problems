@@ -8,38 +8,43 @@
  * exceed four million, find the sum of the even-valued terms.
 */
 (function (max) {
-var n = 0;
-var result = 0;
-var cache = {};
-var sequence = [];
 
-// get the Fibonacci sequence where the last term is below `max`
-do {
-	// get the last value in the sequence
-	result = fib(n, cache);
-}
-while (
-	// if the last value is less than the max
-	result < max &&
-	// push `result` into the sequence
-	sequence.push(result) &&
-	// increment `n` and iterate again
-	++n
-);
-console.log(sequence);
-
-var sum = 0;
-sequence
+var sum = fibonaccisUntil(max)
 	// get the even values
 	.filter(function (value) {
+		// even numbers have a remainder of `0`
+		// `!0 === true`
 		return !(value % 2);
 	})
 	// add them together
-	.forEach(function (value) {
-		console.log('add', value);
-		sum += value;
-	});
+	.reduce(function (previous, current) {
+		return previous + current;
+	}, 0);
 console.log('sum of even-valued terms less than', max, 'is', sum);
+
+// internal functions
+function fibonaccisUntil(max) {
+	var n = 0;
+	var result = 0;
+	var cache = {};
+	var sequence = [];
+
+	// get the Fibonacci sequence where the last term is below `max`
+	do {
+		// get the last value in the sequence
+		result = fib(n, cache);
+	}
+	while (
+		// if the last value is less than the max
+		result < max &&
+		// push `result` into the sequence
+		sequence.push(result) &&
+		// increment `n` and iterate again
+		++n
+	);
+
+	return sequence;
+}
 
 function fib(n, cache) {
 
@@ -54,7 +59,7 @@ function fib(n, cache) {
 			: fib(n - 1, cache) + fib(n - 2, cache);
 	}
 
-	// return the stored result
+	// return the cached result
 	return cache[n];
 }
 })(4e6);

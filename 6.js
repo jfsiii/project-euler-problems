@@ -17,7 +17,8 @@
 
     var range = new Range(1, max);
     var sumOfSquares = range.map(square).reduce(sum);
-    var squareOfSums = Math.pow(range.reduce(sum), 2);
+    var sums = range.reduce(sum);
+    var squareOfSums = Math.pow(sums, 2);
 
     console.log(squareOfSums - sumOfSquares);
 
